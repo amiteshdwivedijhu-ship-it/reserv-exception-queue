@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reserv · Glance · Exception queue</title>
+<link rel="icon" href="assets/favicon.jpg">
+<meta name="description" content="Reserv-styled claims exception queue: claim exception, AI-drafted adjuster action with claim-doc citation, Approve or Deny. Synthetic data only.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <img src="assets/logo.png" alt="Reserv" class="logo">
+    <span class="brand-divider"></span>
+    <span class="module">Glance</span>
+    <span class="crumb">/ Exception queue</span>
+  </div>
+  <div class="topright">
+    <span class="pill mint" title="All claims, invoices, estimates and reserves are synthetic. No carrier systems were accessed.">Synthetic data</span>
+    <span class="top-date" id="top-date"></span>
+    <span class="avatar">A</span>
+    <span class="user">Ami · Claims Adjuster</span>
+  </div>
+</header>
+
+<div class="app-shell">
+
+  <aside class="queue" aria-label="Exception queue">
+    <div class="panel-head">
+      <h2>Exception queue</h2>
+      <span class="muted" id="queue-note"></span>
+    </div>
+    <div class="q-rows" id="q-rows" role="listbox" aria-label="Claim exceptions waiting for adjuster"></div>
+    <div class="resolved-head" id="resolved-head" hidden>
+      <h3>Resolved</h3>
+      <span class="muted" id="resolved-note"></span>
+    </div>
+    <div class="q-rows" id="r-rows"></div>
+    <div class="panel-foot">
+      <span class="muted" id="queue-foot"></span>
+    </div>
+  </aside>
+
+  <main class="detail" id="detail" aria-live="polite">
+    <div class="placeholder">
+      <p>Select an exception from the queue.</p>
+      <p class="muted">Every AI draft cites the claim document and page or field it came from. You approve or deny, and the queue advances.</p>
+    </div>
+  </main>
+
+  <aside class="actions" id="actions" aria-label="Adjuster action"></aside>
+
+</div>
+
+<footer class="foot">
+  <span>Prototype only. Synthetic claims. Reserv Glance vocabulary: claim, exception, AI draft, citation, Approve, Deny, reserve, estimate, cycle time.</span>
+  <button type="button" class="reset" id="reset-btn">Reset queue</button>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
