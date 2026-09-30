@@ -258,7 +258,7 @@ function renderActions(c) {
         <span class="tick">✓</span> <b>${esc(c.id)}</b> approved. The AI draft and your note are in the claim note, and the exception left the queue.
         ${next ? `<span class="go-next"><button type="button" id="next-btn">Next exception →</button></span>` : ""}
       </div>`;
-    $("#next-btn")?.addEventListener("click", () => selectCase(next.id));
+    $("#next-btn")?.addEventListener("click", () => selectCase(next.id, true));
     return;
   }
 
@@ -349,7 +349,7 @@ function doDeny(c) {
   toast(`Denied ${c.id}. AI re-drafted with your note.`, "warn");
 }
 
-function selectCase(id) {
+function selectCase(id, scroll) {
   const c = state.waiting.find((w) => w.id === id) || state.resolved.find((r) => r.id === id);
   if (!c) return;
   state.selectedId = id;
@@ -357,6 +357,9 @@ function selectCase(id) {
   renderQueue();
   renderDetail(c);
   renderActions(c);
+  if (scroll && window.matchMedia("(max-width: 1100px)").matches) {
+    $("#detail").scrollIntoView({ behavior: "smooth", block: "start" });
+  }
 }
 
 /* ---------- wire ---------- */
@@ -404,11 +407,11 @@ function renderAll() {
 
 $("#q-rows").addEventListener("click", (e) => {
   const row = e.target.closest(".qrow");
-  if (row) selectCase(row.dataset.id);
+  if (row) selectCase(row.dataset.id, true);
 });
 $("#r-rows").addEventListener("click", (e) => {
   const row = e.target.closest(".qrow");
-  if (row) selectCase(row.dataset.id);
+  if (row) selectCase(row.dataset.id, true);
 });
 $("#detail").addEventListener("click", (e) => {
   const chip = e.target.closest("[data-cite]");

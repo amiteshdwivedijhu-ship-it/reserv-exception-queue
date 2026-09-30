@@ -88,7 +88,6 @@ button { font-family: inherit; }
 }
 .cite-chip.on { border-color: var(--mint); background: rgba(34, 214, 144, 0.14); box-shadow: 0 0 0 2px rgba(34, 214, 144, 0.25); }
 .cite-chip .sup { font-size: 10px; color: var(--mint); font-weight: 800; }
-.cite-chip .sup { font-size: 10px; color: var(--mint); font-weight: 800; }
 .cite-chip .loc { color: var(--muted); font-weight: 500; }
 
 .exc-pill {
@@ -109,11 +108,6 @@ button { font-family: inherit; }
   max-width: 1380px;
   margin: 0 auto;
   align-items: start;
-}
-
-@media (max-width: 1100px) {
-  .app-shell { grid-template-columns: 1fr; }
-  .actions { order: -1; }
 }
 
 .queue, .detail, .actions { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
@@ -309,3 +303,52 @@ button { font-family: inherit; }
 .toast.show { opacity: 1; transform: translateY(0); }
 
 .tick { color: var(--mint); font-weight: 800; }
+/* ---- responsive overrides (end of file so they win the cascade) ---- */
+
+@media (max-width: 1100px) {
+  .app-shell { grid-template-columns: 1fr; }
+  .actions { position: static; }
+}
+
+@media (max-width: 640px) {
+  body { -webkit-tap-highlight-color: rgba(34, 214, 144, 0.18); }
+
+  .topbar { gap: 8px; padding: 10px 14px; }
+  .brand { gap: 8px; }
+  .topright { gap: 10px; }
+  .top-date, .user, .crumb { display: none; }
+  .logo { height: 20px; }
+
+  .app-shell { gap: 12px; padding: 14px; }
+  .detail { min-height: 0; }
+
+  .qrow { padding: 13px 14px; }
+  .cite-chip { padding: 8px 11px; font-size: 12px; }
+  .exc-pill { padding: 4px 10px; font-size: 11.5px; }
+  .pill { padding: 5px 11px; font-size: 12px; }
+
+  .btn { padding: 13px 14px; min-height: 48px; font-size: 15px; }
+  .reset { padding: 8px 14px; font-size: 12.5px; }
+  .posted .go-next button { padding: 10px 14px; font-size: 13.5px; }
+
+  .claim-id { font-size: 18px; }
+  .draft-text { font-size: 15px; line-height: 1.6; }
+  .claim-meta { font-size: 13px; }
+  .exception-box .v { font-size: 14px; }
+  .q-exc { font-size: 13px; }
+  .q-lob { font-size: 11.5px; }
+  .q-id { font-size: 14px; }
+
+  .note-wrap input { font-size: 16px; padding: 11px 12px; }
+
+  .toast { top: auto; bottom: 16px; left: 14px; right: 14px; transform: translateY(8px); }
+  .toast.show { transform: translateY(0); }
+
+  .foot { flex-direction: column; align-items: flex-start; gap: 10px; padding: 4px 16px 22px; font-size: 12px; }
+}
+
+@media (max-width: 360px) {
+  .topbar { gap: 6px; padding: 10px 10px; }
+  .topright { gap: 8px; }
+  .logo { height: 18px; }
+}
